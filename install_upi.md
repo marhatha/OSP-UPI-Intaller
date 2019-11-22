@@ -26,6 +26,11 @@ The requirements for UPI are broadly similar to the [ones for OpenStack IPI][ipi
 - The `openshift-install` binary in your `$PATH`
 - The [Red Hat CoreOS][rhcos] image in Glance
   - *This document* will use `rhcos` as the image name
+  
+  
+  ![Glance RHCOS Image](rhcos.jpg)
+  
+  
 - A subnet range for the Nova servers / OpenShift Nodes
   - This range must not conflict with your existing network
   - *This document* will use `192.0.2.0/24`
@@ -47,16 +52,6 @@ The requirements for UPI are broadly similar to the [ones for OpenStack IPI][ipi
 [dns-details]: #create-public-dns-records
 
 The OpenShift API URL will be generated from the cluster name and base domain. E.g.: `https://api.openshift.example.com:6443/`
-
-
-
-
-
-### Upload latest rhcos qcow2 image i.e. rhcos-420.8.20190611.0-openstack.qcow2  to the glance as shown below:
-
-
-![Glance RHCOS Image](rhcos.jpg)
-
 
 
 
