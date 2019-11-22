@@ -107,7 +107,7 @@ export PROJID=$(openstack project show openshift -c id -f value)
 clouds:
   openstack:
     auth:
-      auth_url: http://172.16.0.102:5000/v3
+      auth_url: http://192.168.1.81:5000/v3
       project_name: openshift
       username: openshift_admin
       password: redhat
