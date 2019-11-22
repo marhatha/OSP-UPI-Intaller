@@ -49,6 +49,16 @@ The requirements for UPI are broadly similar to the [ones for OpenStack IPI][ipi
 The OpenShift API URL will be generated from the cluster name and base domain. E.g.: `https://api.openshift.example.com:6443/`
 
 
+Upload latest rhcos qcow2 image on to the glance as shown below:
+
+```sh
+
+![Glance RHCOS Image](rhcos.jpg)
+
+```
+
+
+
 You can validate most of the above by running the following commands:
 
 ```sh
