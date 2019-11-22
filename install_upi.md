@@ -59,7 +59,7 @@ $ openstack flavor show m1.xlarge
 $ openstack flavor show m1.large
 $ which openshift-install
 
-Download the openshift-install from https://cloud.redhat.com/openshift/install > OpenStack > Download installer
+**NOTE**: Download the openshift-install from https://cloud.redhat.com/openshift/install > OpenStack > Download installer
 
 
 ```
@@ -94,23 +94,6 @@ $ openstack floating ip create --description "OpenShift Ingress" <external>
 
 **NOTE**: throughout this document, we will use `203.0.113.23` as the public IP address for the OpenShift API endpoint and `203.0.113.19` as the public IP for the ingress (`*.apps`) endpoint.
 
-## Install Config
-
-Run the `create install-config` subcommand and fill in the desired entries:
-
-```sh
-$ openshift-install create install-config
-? SSH Public Key </home/user/.ssh/id_rsa.pub>
-? Platform <openstack>
-? Cloud <openstack>
-? ExternalNetwork <external>
-? APIFloatingIPAddress <203.0.113.23>
-? FlavorName <m1.xlarge>
-? Base Domain <example.com>
-? Cluster Name <openshift>
-
-```
-
 
 ### Steps to generate cloud.yaml file:
 
@@ -134,6 +117,27 @@ clouds:
 EOF
 
 ```
+
+
+
+
+## Install Config
+
+Run the `create install-config` subcommand and fill in the desired entries:
+
+```sh
+$ openshift-install create install-config
+? SSH Public Key </home/user/.ssh/id_rsa.pub>
+? Platform <openstack>
+? Cloud <openstack>
+? ExternalNetwork <external>
+? APIFloatingIPAddress <203.0.113.23>
+? FlavorName <m1.xlarge>
+? Base Domain <example.com>
+? Cluster Name <openshift>
+
+```
+
 
 
 
