@@ -119,32 +119,19 @@ openstack project create openshift
 openstack user create --password 'redhat' openshift_admin
 openstack role add --project openshift --user openshift_admin admin
 
-(overcloud) [stack@undercloud ~]$ cat > openshiftrc <<\EOF
-for key in $( set | awk '{FS="="}  /^OS_/ {print $1}' ); do unset $key ; done
-export OS_NO_CACHE=True
-export COMPUTE_API_VERSION=1.1
-export OS_USERNAME=openshift_admin
-export no_proxy=,172.16.0.102,172.16.0.102
-export OS_USER_DOMAIN_NAME=Default
-export OS_VOLUME_API_VERSION=3
-export OS_CLOUDNAME=openshift
-export OS_AUTH_URL=http://172.16.0.102:5000//v3
-export NOVA_VERSION=1.1
-export OS_IMAGE_API_VERSION=2
-export OS_PASSWORD=redhat
-export OS_PROJECT_DOMAIN_NAME=Default
-export OS_IDENTITY_API_VERSION=3
-export OS_PROJECT_NAME=openshift
-export OS_AUTH_TYPE=password
-export PYTHONWARNINGS="ignore:Certificate has no, ignore:A true SSLContext object is not available"
+[root@openshift-ocp-92n4c-bootstrap openstack-upi(keystone_admin)]# cat clouds.yaml
+clouds:
+  openstack:
+    auth:
+      auth_url: http://192.168.1.81:5000/v3
+      project_name: openshift
+      username: openshift_admin
+      password: redhat
+      user_domain_name: Default
+      project_domain_name: Default
+      project_id: 4794425056634cd1854483904d5040cf
+[root@openshift-ocp-92n4c-bootstrap openstack-upi(keystone_admin)]#
 
-# Add OS_CLOUDNAME to PS1
-if [ -z "${CLOUDPROMPT_ENABLED:-}" ]; then
-    export PS1=${PS1:-""}
-    export PS1=${OS_CLOUDNAME:+"($OS_CLOUDNAME)"}\ $PS1
-    export CLOUDPROMPT_ENABLED=1
-fi
-EOF
 ```
 
 
