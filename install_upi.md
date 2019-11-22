@@ -52,7 +52,7 @@ The OpenShift API URL will be generated from the cluster name and base domain. E
 
 
 
-## Upload latest rhcos qcow2 image i.e. rhcos-420.8.20190611.0-openstack.qcow2  to the glance as shown below:
+### Upload latest rhcos qcow2 image i.e. rhcos-420.8.20190611.0-openstack.qcow2  to the glance as shown below:
 
 
 ![Glance RHCOS Image](rhcos.jpg)
