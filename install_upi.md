@@ -118,8 +118,8 @@ clouds:
       project_name: openshift
       username: openshift_admin
       password: redhat
-      user_domain_name: Default
-      project_domain_name: Default
+      user_domain_name: $OS_USER_DOMAIN_NAME
+      project_domain_name: $OS_PROJECT_DOMAIN_NAME
       project_id: $PROJID
 EOF
 
@@ -231,22 +231,8 @@ data["compute"][0]["replicas"] = 0;
 open(path, "w").write(yaml.dump(data, default_flow_style=False))'
 ```
 
-### Modify NetworkType (Required for Kuryr SDN)
 
-By default the `networkType` is set to `OpenShiftSDN` on the `install-config.yaml`.
 
-If an installation with Kuryr is desired, you must modify the `networkType` field.
-
-This command will do it for you:
-
-```sh
-$ python3 -c '
-import yaml;
-path = "install-config.yaml";
-data = yaml.safe_load(open(path));
-data["networking"]["networkType"] = "Kuryr";
-open(path, "w").write(yaml.dump(data, default_flow_style=False))'
-```
 
 ## Edit Manifests
 
@@ -783,15 +769,7 @@ for index in $(seq 0 2); do
 done
 ```
 
-### Control Plane Trunks (Required for Kuryr SDN)
 
-We will create the Trunks for Kuryr to plug the containers into the OpenStack SDN.
-
-```sh
-for index in $(seq 0 2); do
-    openstack network trunk create --parent-port "$INFRA_ID-master-port-$index" "$INFRA_ID-master-trunk-$index"
-done
-```
 
 
 ### Control Plane Servers
@@ -879,15 +857,7 @@ for index in $(seq 0 2); do
 done
 ```
 
-### Compute Nodes Trunks (Required for Kuryr SDN)
 
-We will create the Trunks for Kuryr to plug the containers into the OpenStack SDN.
-
-```sh
-for index in $(seq 0 2); do
-    openstack network trunk create --parent-port "$INFRA_ID-worker-port-$index" "$INFRA_ID-worker-trunk-$index"
-done
-```
 
 ### Compute Nodes server
 
