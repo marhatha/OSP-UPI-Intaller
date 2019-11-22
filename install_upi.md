@@ -180,7 +180,7 @@ $ tree
 
 ```sh
 yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-yum -y install tftp-server dnsmasq syslinux-tftpboot tree python36 jq oniguruma
+yum -y install syslinux-tftpboot tree python36 jq oniguruma
 ```
 
 
