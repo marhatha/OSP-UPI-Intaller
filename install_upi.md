@@ -116,6 +116,22 @@ clouds:
       project_id: $PROJID
 EOF
 
+
+**NOTE**: You can obtain the auth_url above from your keystonerc_admin file generated as part of OSP deployment.For example:
+
+cat keystonerc_admin
+unset OS_SERVICE_TOKEN
+    export OS_USERNAME=admin
+    export OS_PASSWORD='c53d507dc8474d83'
+    export OS_REGION_NAME=RegionOne
+    export OS_AUTH_URL=http://192.168.1.81:5000/v3
+    export PS1='[\u@\h \W(keystone_admin)]\$ '
+    export OS_PROJECT_NAME=admin
+    export OS_USER_DOMAIN_NAME=Default
+    export OS_PROJECT_DOMAIN_NAME=Default
+    export OS_IDENTITY_API_VERSION=3
+
+
 ```
 
 
