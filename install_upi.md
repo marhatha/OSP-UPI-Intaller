@@ -118,19 +118,20 @@ $ openshift-install create install-config
 openstack project create openshift
 openstack user create --password 'redhat' openshift_admin
 openstack role add --project openshift --user openshift_admin admin
+export PROJID=$(openstack project show openshift -c id -f value)
 
-[root@openshift-ocp-92n4c-bootstrap openstack-upi(keystone_admin)]# cat clouds.yaml
+(openshift) [stack@undercloud openshift]$ cat > clouds.yaml <<EOF
 clouds:
   openstack:
     auth:
-      auth_url: http://192.168.1.81:5000/v3
+      auth_url: http://172.16.0.102:5000/v3
       project_name: openshift
       username: openshift_admin
       password: redhat
       user_domain_name: Default
       project_domain_name: Default
-      project_id: 4794425056634cd1854483904d5040cf
-[root@openshift-ocp-92n4c-bootstrap openstack-upi(keystone_admin)]#
+      project_id: $PROJID
+EOF
 
 ```
 
